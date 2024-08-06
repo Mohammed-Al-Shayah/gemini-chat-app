@@ -1,4 +1,5 @@
-import 'package:aichatgpt/myHomeApp.dart';
+import 'package:aichatgpt/on_boarding.dart';
+import 'package:aichatgpt/themes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,11 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Home(),
+      theme: lightMode,
+      darkTheme: darkMode,
+      debugShowCheckedModeBanner: false,
+      home: const OnBoarding(),
     );
   }
 }

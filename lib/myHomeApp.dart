@@ -2,7 +2,7 @@ import 'package:aichatgpt/message.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -64,8 +65,9 @@ class _HomeState extends State<Home> {
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          color:
-                              message.isUser ? Colors.blue : Colors.grey[300],
+                          color: message.isUser
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.secondary,
                           borderRadius: message.isUser
                               ? const BorderRadius.only(
                                   topLeft: Radius.circular(20),
@@ -79,9 +81,9 @@ class _HomeState extends State<Home> {
                                 )),
                       child: Text(
                         message.text,
-                        style: TextStyle(
-                          color: message.isUser ? Colors.white : Colors.black,
-                        ),
+                        style: message.isUser
+                            ? Theme.of(context).textTheme.bodyMedium
+                            : Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
                   ),
@@ -101,7 +103,7 @@ class _HomeState extends State<Home> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3))
+                        offset: const Offset(0, 3))
                   ]),
               child: Row(
                 children: [
@@ -116,14 +118,15 @@ class _HomeState extends State<Home> {
                               .titleSmall!
                               .copyWith(color: Colors.grey),
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20)),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 20)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   _isLoading
-                      ? Padding(
+                      ? const Padding(
                           padding: EdgeInsets.all(8),
                           child: SizedBox(
                             width: 20,
